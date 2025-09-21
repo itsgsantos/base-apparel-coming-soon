@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+:root {
+  --color-white: hsl(0, 0%, 100%);
+  --color-bg: hsl(0, 100%, 98%);
+  --color-accent-light: hsl(0, 80%, 86%);
+  --color-accent: hsl(0, 74%, 74%);
+  --color-accent-dark: hsl(0, 36%, 70%);
+  --color-error: hsl(0, 93%, 68%);
+  --color-text: hsl(0, 6%, 24%);
+  --font-base: "Josefin Sans", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.debug * {
+  outline: 1px dashed rgba(0, 0, 0, 0.3);
+}
+
+img {
+  max-width: 100%;
+}
+
+main.container {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  background: url("../images/bg-pattern-desktop.svg") no-repeat,
+    linear-gradient(135deg, var(--color-bg), var(--color-white));
+  background-size: cover;
+  background-position: bottom;
+}
+
+#logo,
+div.content {
+  grid-column: 2;
+}
+
+#logo {
+  width: 100px;
+  margin: 30px 0;
+}
+
+div.hero {
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+  grid-column: 1 / -1;
+}
+
+.hero picture,
+.hero img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+div.content {
+  text-align: center;
+  max-width: 400px;
+  margin: 64px auto;
+}
+
+h1.title {
+  font-size: 2.75rem;
+  text-transform: uppercase;
+  max-width: 340px;
+  font-weight: 300;
+  margin: 0 auto;
+  color: var(--color-accent-dark);
+  font-family: var(--font-base);
+}
+
+h1.title span {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+p.description {
+  font-family: var(--font-base);
+  color: var(--color-accent-dark);
+  max-width: 380px;
+  margin-top: 26px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+form#contact {
+  margin: 40px auto 0 auto;
+  position: relative;
+  max-width: 375px;
+}
+
+form#contact.error::after {
+  font-size: 16px;
+  line-height: 28px;
+  content: "!";
+  width: 26px;
+  height: 26px;
+  color: var(--color-white);
+  text-align: center;
+  border-radius: 50%;
+  background-color: var(--color-error);
+  position: absolute;
+  font-family: var(--font-base);
+  top: 13px;
+  right: 100px;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 18px 24px;
+  border: 1px solid var(--color-accent-dark);
+  border-radius: 100px;
+  background: transparent;
+  font-family: var(--font-base);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+}
+
+input[type="email"]::placeholder {
+  opacity: 0.6;
+  color: var(--color-accent-dark);
+}
+
+input[type="email"]:focus-visible {
+  outline-color: var(--color-accent);
+}
+
+input[type="email"].error {
+  border: 1px solid var(--color-error);
+}
+
+form#contact span.error {
+  display: none;
+}
+
+form#contact span.error.active {
+  display: block;
+}
+
+form#contact span#email-error {
+  font-family: var(--font-base);
+  margin-top: 14px;
+  position: absolute;
+  left: 24px;
+  color: var(--color-error);
+}
+
+form#contact button {
+  cursor: pointer;
+  top: 0px;
+  right: -2px;
+  border: none;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  position: absolute;
+  padding: 15px 36px;
+  border-radius: 100px;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-accent-light),
+    var(--color-accent)
+  );
+  transition: 0.5s;
+}
+
+form#contact button:focus-visible {
+  /* transition: none; */
+  outline-color: var(--color-accent);
+}
+
+form#contact button:hover {
+  transform: translate3d(6px, 0px, 0px);
+  box-shadow: 0px 10px 30px var(--color-accent-light);
+  background-image: linear-gradient(
+    -45deg,
+    var(--color-accent-light),
+    var(--color-bg)
+  );
+}
+
+@media (min-width: 769px) {
+  main.container {
+    display: grid;
+    grid-template-columns: 0.25fr 1.5fr 1.25fr;
+    grid-template-rows: 64px 32px 60px 1fr 64px;
+  }
+
+  div.content {
+    grid-row: 4;
+    grid-column: 2;
+    margin: initial;
+    margin-right: 40px;
+    align-self: flex-start;
+  }
+
+  #logo {
+    margin: 0;
+    grid-row: 2;
+    height: 24px;
+    grid-column: 2;
+  }
+
+  h1.title,
+  p.description {
+    margin: 0;
+    text-align: initial;
+  }
+
+  p.description {
+    margin-top: 37px;
+  }
+
+  h1.title {
+    font-size: 4rem;
+    max-width: 10ch;
+    font-weight: 300;
+    letter-spacing: 15px;
+  }
+
+  div.hero {
+    height: 100%;
+    min-height: 100%;
+    max-height: 100dvh;
+    grid-column: 3;
+    overflow: hidden;
+    grid-row: 1 / -1;
+  }
+
+  div.hero img {
+    min-height: 100vh;
+  }
+
+  form#contact {
+    margin: 0;
+    margin-top: 49px;
+  }
+}
+
+@media (min-width: 1400px) {
+  #logo {
+    width: 150px;
+  }
+
+  div.content {
+    text-align: center;
+    width: 100%;
+    min-width: 555px;
+    max-width: 500px;
+    margin-top: 64px;
+  }
+
+  h1.title {
+    font-size: 6rem;
+  }
+
+  p.description {
+    max-width: 90%;
+    font-size: 1.125rem;
+    line-height: 1.5;
+  }
+
+  form#contact {
+    max-width: 90%;
+  }
+}
